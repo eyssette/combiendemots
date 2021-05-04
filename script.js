@@ -10,6 +10,7 @@ let percentageOfImportantWords = document.getElementById("percentage-important-w
 let percentageOfImportantWordsNotShort = document.getElementById("percentage-important-words-not-short");
 let numberOfLongWords = document.getElementById("number-long-words");
 let percentageOfLongWords = document.getElementById("percentage-long-words");
+let numberOfDifferentLongWords = document.getElementById("number-different-long-words");
 let averageWordLength = document.getElementById("average-word-length");
 let averageSentenceLength = document.getElementById("average-sentence-length");
 
@@ -51,9 +52,10 @@ function handleInput(e) {
 	let percentageOfImportantWordsNotShortCounter = Math.round((numberOfImportantWordsNotShortCounter / wordsCounter)*100*10)/10;
 	let numberOfLongWordsCounter = longWordsList.length;
 	let percentageOfLongWordsCounter = Math.round((numberOfLongWordsCounter / wordsCounter)*100*10)/10;
+	let differentLongWordsList = [...new Set(longWordsList)];
+	let numberOfDifferentLongWordsCounter = differentLongWordsList.length;
 	let averageWordLengthCounter = Math.round((lettersAndNumbersCounter/wordsCounter)*10)/10;
 	let averageSentenceLengthCounter = Math.round((wordsCounter/sentencesCounter)*10)/10;
-
 	words.innerHTML = wordsCounter;
 	characters.innerHTML = charactersCounter;
 	lettersAndNumbers.innerHTML = lettersAndNumbersCounter;
@@ -66,6 +68,7 @@ function handleInput(e) {
 	if (percentageOfImportantWordsNotShortCounter) { percentageOfImportantWordsNotShort.innerHTML = percentageOfImportantWordsNotShortCounter+' %';} else {percentageOfImportantWordsNotShort.innerHTML ='0';}
 	numberOfLongWords.innerHTML = numberOfLongWordsCounter;
 	if (percentageOfLongWordsCounter) { percentageOfLongWords.innerHTML = percentageOfLongWordsCounter+' %';} else {percentageOfLongWords.innerHTML='0';}
+	numberOfDifferentLongWords.innerHTML = numberOfDifferentLongWordsCounter ;
 	if (averageWordLengthCounter) {averageWordLength.innerHTML = averageWordLengthCounter+ ' caractères';} else {averageWordLength.innerHTML = '0';}
 	if (averageSentenceLengthCounter) {averageSentenceLength.innerHTML = averageSentenceLengthCounter+ ' mots';} else {averageSentenceLength.innerHTML = '0'}
 }
