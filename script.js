@@ -5,6 +5,9 @@ let sentences = document.getElementById("sentences");
 let readingTime = document.getElementById("reading-time");
 let handwritingTime = document.getElementById("handwriting-time");
 let speakingTime = document.getElementById("speaking-time");
+let numberOfLongWords = document.getElementById("number-long-words");
+let averageWordLength = document.getElementById("average-word-length");
+let averageSentenceLength = document.getElementById("average-sentence-length");
 
 let input = document.getElementById("champ-texte");
 input.oninput = handleInput;
@@ -15,23 +18,27 @@ function handleInput(e) {
 	let regex2 = /[\s+]/g;
 	let textClean = text.replace(regex1, '').replace(':', '').trim();
 	let textCleanNoWhiteSpace = textClean.replace(regex2,'');
-	let wordsCounter = textClean.split(/\s+/).length;
+	let wordsList = textClean.split(/\s+/).filter(function (el) {
+		return el != '';
+	  });
+	let wordsCounter = wordsList.length;
 	let charactersCounter = text.length;
 	let lettersAndNumbersCounter = textCleanNoWhiteSpace.length;
 	let sentencesClean = text.split('.').filter(function (el) {
 		return el != '';
 	  });
 	let sentencesCounter = sentencesClean.length;
-	if (sentencesCounter ==0){sentencesCounter=1};
+	if (wordsList >0 && sentencesCounter == 0){sentencesCounter=1};
 	let readingTimeCounter = (wordsCounter/250)*60;
 	let handwritingTimeCounter1 = (wordsCounter/15)*60;
 	let handwritingTimeCounter2 = (charactersCounter/120)*60;
 	let handwritingTimeCounterMin = Math.min(handwritingTimeCounter1,handwritingTimeCounter2);
 	let handwritingTimeCounterMax = Math.max(handwritingTimeCounter1,handwritingTimeCounter2);
 	let speakingTimeCounter = (wordsCounter/150)*60; ;
-	let averageWordLength = charactersCounter/wordsCounter;
-	let averageSentenceLength = wordsCounter/sentencesCounter;
-
+	let longWordsList = wordsList.filter(word => word.length > 7);
+	let numberOfLongWordsCounter = longWordsList.length;
+	let averageWordLengthCounter = charactersCounter/wordsCounter;
+	let averageSentenceLengthCounter = wordsCounter/sentencesCounter;
 
 	words.innerHTML = wordsCounter;
 	characters.innerHTML = charactersCounter;
@@ -40,6 +47,7 @@ function handleInput(e) {
 	readingTime.innerHTML = tempsEnMinutesEtSecondes(readingTimeCounter); 
 	handwritingTime.innerHTML = 'entre '+tempsEnMinutesEtSecondes(handwritingTimeCounterMin) + ' et ' +tempsEnMinutesEtSecondes(handwritingTimeCounterMax) ; 
 	speakingTime.innerHTML = tempsEnMinutesEtSecondes(speakingTimeCounter); 
+	numberOfLongWords.innerHTML = numberOfLongWordsCounter;
 }
 
 function tempsEnMinutesEtSecondes(time) {
