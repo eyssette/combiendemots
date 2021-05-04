@@ -8,12 +8,21 @@
   <body>
 	<p><label for="champ-texte">Votre texte :</label></p>
     <textarea id="champ-texte" rows="20" cols="80"></textarea>
+	<h1>Premiers calculs</h1>
 	<dl><dt>Nombre de mots :</dt><dd id="words"> </dd>
-		<dt>Nombre de caractères :</dt><dd id="characters"> </dd>
+		<dt>Nombre de caractères (tous compris):</dt><dd id="characters"> </dd>
+		<dt>Nombre de lettres & chiffres :</dt><dd id="letters-and-numbers"> </dd>
 		<dt>Nombre de phrases :</dt><dd id="sentences"> </dd>
-		<dt>Temps de lecture :</dt><dd id="reading-time"> </dd>
+		</dl>
+		<h1>Mesures du temps</h1>
+	<dl><dt>Temps de lecture :</dt><dd id="reading-time"> </dd>
 		<dt>Temps d'écriture manuscrite :</dt><dd id="handwriting-time"> </dd>
 		<dt>Temps d'élocution :</dt><dd id="speaking-time"> </dd>
+		</dl>
+	<h1>Mesure de la complexité</h1>
+	<dl><dt>Nombre de mots de plus de 6 caractères :</dt><dd id="number-long-words"> </dd>
+		<dt>Longueur moyenne des mots :</dt><dd id="average-word-length"> </dd>
+		<dt>Longueur moyenne des phrases :</dt><dd id="average-sentence-length"> </dd>
 		</dl>
 		<script src="script.js"></script>
   </body>

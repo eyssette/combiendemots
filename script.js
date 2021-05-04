@@ -1,5 +1,6 @@
 let words = document.getElementById("words");
 let characters = document.getElementById("characters");
+let lettersAndNumbers = document.getElementById("letters-and-numbers");
 let sentences = document.getElementById("sentences");
 let readingTime = document.getElementById("reading-time");
 let handwritingTime = document.getElementById("handwriting-time");
@@ -9,10 +10,15 @@ let input = document.getElementById("champ-texte");
 input.oninput = handleInput;
 
 function handleInput(e) {
-	let texte = input.value;
-	let wordsCounter = texte.split(' ').length;
-	let charactersCounter = texte.length;
-	let sentencesCounter = texte.split('.').length;
+	let text = input.value;
+	let regex1 = /[^a-zA-Z\d\s\u00C0-\u00FF]/g;
+	let regex2 = /[\s]/g;
+	let textClean = text.replace(regex1, '').replace(':', '');
+	let textCleanNoWhiteSpace = textClean.replace(regex2,'');
+	let wordsCounter = textClean.split(' ').length;
+	let charactersCounter = text.length;
+	let lettersAndNumbersCounter = textCleanNoWhiteSpace.length;
+	let sentencesCounter = text.split('.').length;
 	let readingTimeCounter = (wordsCounter/250)*60;
 	let handwritingTimeCounter1 = (wordsCounter/15)*60;
 	let handwritingTimeCounter2 = (charactersCounter/120)*60;
@@ -25,6 +31,7 @@ function handleInput(e) {
 
 	words.innerHTML = wordsCounter;
 	characters.innerHTML = charactersCounter;
+	lettersAndNumbers.innerHTML = lettersAndNumbersCounter;
 	sentences.innerHTML = sentencesCounter;
 	readingTime.innerHTML = tempsEnMinutes(readingTimeCounter); 
 	handwritingTime.innerHTML = 'entre '+tempsEnMinutes(handwritingTimeCounterMin) + ' et ' +tempsEnMinutes(handwritingTimeCounterMax) ; 
