@@ -10,12 +10,12 @@ let input = document.getElementById("champ-texte");
 input.oninput = handleInput;
 
 function handleInput(e) {
-	let text = input.value;
+	let text = input.value.trim();
 	let regex1 = /[^a-zA-Z\d\s\u00C0-\u00FF]/g;
 	let regex2 = /[\s]/g;
-	let textClean = text.replace(regex1, '').replace(':', '');
+	let textClean = text.replace(regex1, '').replace(':', '').trim();
 	let textCleanNoWhiteSpace = textClean.replace(regex2,'');
-	let wordsCounter = textClean.split(' ').length;
+	let wordsCounter = textClean.split(/\s+/).length;
 	let charactersCounter = text.length;
 	let lettersAndNumbersCounter = textCleanNoWhiteSpace.length;
 	let sentencesCounter = text.split('.').length;
