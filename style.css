@@ -1,5 +1,5 @@
 body {text-align:center; background-color:  #222; font-size:24px;}
-textarea {background-color: lightgrey!important; font-size:18px;}
+textarea {background-color: lightgrey!important; font-size:0.8em;}
 label, dl {color:lightgrey;}
 
 dl {
