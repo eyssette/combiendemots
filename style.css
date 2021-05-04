@@ -1,0 +1,27 @@
+body {text-align:center; background-color:  #222; font-size:24px;}
+textarea {background-color: lightgrey!important; font-size:18px;}
+label, dl {color:lightgrey}
+
+dl {
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0
+  }
+  dt {
+	float: left;
+	width: 50%;
+	/* adjust the width; make sure the total of both is 100% */
+	padding: 0;
+	margin: 0;
+	text-align:right;
+  }
+  dd {
+	float: left;
+	width: 45%;
+	/* adjust the width; make sure the total of both is 100% */
+	padding: 0;
+	margin:0;
+	padding-left: 10px;
+	text-align:left;
+  }
