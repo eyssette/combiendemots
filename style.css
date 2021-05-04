@@ -1,12 +1,13 @@
 body {text-align:center; background-color:  #222; font-size:24px;}
 textarea {background-color: lightgrey!important; font-size:18px;}
-label, dl {color:lightgrey}
+label, dl {color:lightgrey;}
 
 dl {
 	width: 100%;
 	overflow: hidden;
 	padding: 0;
-	margin: 0
+	margin: 0;
+	margin-top:30px;
   }
   dt {
 	float: left;
