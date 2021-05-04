@@ -5,6 +5,8 @@ let readingTime = document.getElementById("reading-time");
 let handwritingTime = document.getElementById("handwriting-time");
 let speakingTime = document.getElementById("speaking-time");
 
+handleInput();
+
 let input = document.getElementById("champ-texte");
 input.oninput = handleInput;
 
