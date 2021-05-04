@@ -139,12 +139,14 @@ function sigmoid(z) {
 }
 
 function remove_uncommon_words(str) {
-    let res = []
-    let words = str.split(' ')
+    let res = [];
+    let words = str.split(' ');
     for(i=0;i<words.length;i++) {
-       let word_clean = words[i].split(".").join("")
-       if(!motsFrequents.includes(word_clean.toLowerCase())) {
-           res.push(word_clean)
+       let word_clean = words[i].split(".").join("");
+	   let word_clean_removeLastCharacter = word_clean.slice(0, -1);
+	   let word_clean_removeLastTwoCharacter = word_clean.slice(0, -2);
+       if(!motsFrequents.includes(word_clean.toLowerCase()) && !motsFrequents.includes(word_clean_removeLastCharacter.toLowerCase()) && !motsFrequents.includes(word_clean_removeLastTwoCharacter.toLowerCase())) {
+           res.push(word_clean);
        }
     }
     return(res.join(' '))
