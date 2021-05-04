@@ -7,6 +7,7 @@ let handwritingTime = document.getElementById("handwriting-time");
 let speakingTime = document.getElementById("speaking-time");
 let numberOfImportantWords = document.getElementById("number-important-words");
 let percentageOfImportantWords = document.getElementById("percentage-important-words");
+let percentageOfImportantWordsNotShort = document.getElementById("percentage-important-words-not-short");
 let numberOfLongWords = document.getElementById("number-long-words");
 let percentageOfLongWords = document.getElementById("percentage-long-words");
 let averageWordLength = document.getElementById("average-word-length");
@@ -44,9 +45,12 @@ function handleInput(e) {
 		return el != '';
 	  });
 	let numberOfImportantWordsCounter = importantWordsList.length;
-	let percentageOfImportantWordsCounter = Math.round((numberOfImportantWordsCounter / wordsCounter)*100/10)*10;
+	let percentageOfImportantWordsCounter = Math.round((numberOfImportantWordsCounter / wordsCounter)*100*10)/10;
+	let importantWordsNotShortList = importantWordsList.filter(word => word.length > 4);
+	let numberOfImportantWordsNotShortCounter = importantWordsNotShortList.length;
+	let percentageOfImportantWordsNotShortCounter = Math.round((numberOfImportantWordsNotShortCounter / wordsCounter)*100*10)/10;
 	let numberOfLongWordsCounter = longWordsList.length;
-	let percentageOfLongWordsCounter = Math.round((numberOfLongWordsCounter / wordsCounter)*100/10)*10;
+	let percentageOfLongWordsCounter = Math.round((numberOfLongWordsCounter / wordsCounter)*100*10)/10;
 	let averageWordLengthCounter = Math.round((lettersAndNumbersCounter/wordsCounter)*10)/10;
 	let averageSentenceLengthCounter = Math.round((wordsCounter/sentencesCounter)*10)/10;
 
@@ -59,6 +63,7 @@ function handleInput(e) {
 	speakingTime.innerHTML = tempsEnMinutesEtSecondes(speakingTimeCounter); 
 	numberOfImportantWords.innerHTML = numberOfImportantWordsCounter;
 	if (percentageOfImportantWordsCounter) { percentageOfImportantWords.innerHTML = percentageOfImportantWordsCounter+' %';} else {percentageOfImportantWords.innerHTML ='0';}
+	if (percentageOfImportantWordsNotShortCounter) { percentageOfImportantWordsNotShort.innerHTML = percentageOfImportantWordsNotShortCounter+' %';} else {percentageOfImportantWordsNotShort.innerHTML ='0';}
 	numberOfLongWords.innerHTML = numberOfLongWordsCounter;
 	if (percentageOfLongWordsCounter) { percentageOfLongWords.innerHTML = percentageOfLongWordsCounter+' %';} else {percentageOfLongWords.innerHTML='0';}
 	if (averageWordLengthCounter) {averageWordLength.innerHTML = averageWordLengthCounter+ ' caractères';} else {averageWordLength.innerHTML = '0';}
