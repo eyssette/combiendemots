@@ -73,7 +73,7 @@ function handleInput(e) {
 	let evalSentenceLenght = averageSentenceLengthCounter / (20+averageSentenceLengthCounter);
 	let percentageOfDifferentLongWordsCounter = numberOfDifferentLongWordsCounter / wordsCounter;
 	let evalNumberOfDifferentLongWordsCounter = percentageOfDifferentLongWordsCounter/(0.09+percentageOfDifferentLongWordsCounter);
-	let evalPercentageOfUncommonWordsCounter = percentageOfUncommonWordsCounter/(30+percentageOfUncommonWordsCounter);
+	let evalPercentageOfUncommonWordsCounter = percentageOfUncommonWordsCounter/(20+percentageOfUncommonWordsCounter);
 	let complexityCounter = (evalPercentageOfImportantWordsNotShortCounter + evalPercentageOfLongWordsCounter + evalWordLenght + 3*evalSentenceLenght + 2*evalNumberOfDifferentLongWordsCounter+3*evalPercentageOfUncommonWordsCounter)/11 ;
 
 	complexityCounter = Math.round(sigmoid(complexityCounter)*100)/100;
