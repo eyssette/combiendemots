@@ -19,6 +19,9 @@ function handleInput(e) {
 	let handwritingTimeCounterMin = Math.min(handwritingTimeCounter1,handwritingTimeCounter2);
 	let handwritingTimeCounterMax = Math.max(handwritingTimeCounter1,handwritingTimeCounter2);
 	let speakingTimeCounter = (wordsCounter/150)*60; ;
+	let averageWordLength = charactersCounter/wordsCounter;
+	let averageSentenceLength = wordsCounter/sentencesCounter;
+
 
 	words.innerHTML = wordsCounter;
 	characters.innerHTML = charactersCounter;
