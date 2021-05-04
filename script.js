@@ -13,6 +13,7 @@ let percentageOfLongWords = document.getElementById("percentage-long-words");
 let numberOfDifferentLongWords = document.getElementById("number-different-long-words");
 let averageWordLength = document.getElementById("average-word-length");
 let averageSentenceLength = document.getElementById("average-sentence-length");
+let complexity = document.getElementById("complexity");
 
 let input = document.getElementById("champ-texte");
 input.oninput = handleInput;
@@ -56,6 +57,16 @@ function handleInput(e) {
 	let numberOfDifferentLongWordsCounter = differentLongWordsList.length;
 	let averageWordLengthCounter = Math.round((lettersAndNumbersCounter/wordsCounter)*10)/10;
 	let averageSentenceLengthCounter = Math.round((wordsCounter/sentencesCounter)*10)/10;
+	let evalPercentageOfImportantWordsNotShortCounter = percentageOfImportantWordsNotShortCounter / (30+percentageOfImportantWordsNotShortCounter);
+	let evalPercentageOfLongWordsCounter = percentageOfLongWordsCounter / (30+percentageOfLongWordsCounter);
+	let evalWordLenght = averageWordLengthCounter / (4.8+averageWordLengthCounter);
+	let evalSentenceLenght = averageSentenceLengthCounter / (20+averageSentenceLengthCounter);
+	let percentageOfDifferentLongWordsCounter = numberOfDifferentLongWordsCounter / wordsCounter;
+	let evalNumberOfDifferentLongWordsCounter = percentageOfDifferentLongWordsCounter/(0.09+percentageOfDifferentLongWordsCounter);
+	let complexityCounter = (evalPercentageOfImportantWordsNotShortCounter + evalPercentageOfLongWordsCounter + evalWordLenght + 3*evalSentenceLenght + 2*evalNumberOfDifferentLongWordsCounter)/8 ;
+	complexityCounter = Math.round(sigmoid(complexityCounter)*100)/100;
+	
+
 	words.innerHTML = wordsCounter;
 	characters.innerHTML = charactersCounter;
 	lettersAndNumbers.innerHTML = lettersAndNumbersCounter;
@@ -71,6 +82,7 @@ function handleInput(e) {
 	numberOfDifferentLongWords.innerHTML = numberOfDifferentLongWordsCounter ;
 	if (averageWordLengthCounter) {averageWordLength.innerHTML = averageWordLengthCounter+ ' caractères';} else {averageWordLength.innerHTML = '0';}
 	if (averageSentenceLengthCounter) {averageSentenceLength.innerHTML = averageSentenceLengthCounter+ ' mots';} else {averageSentenceLength.innerHTML = '0'}
+	if (complexityCounter) {complexity.innerHTML = complexityCounter;} else {complexity.innerHTML = '0';}
 }
 
 function tempsEnMinutesEtSecondes(time) {
@@ -106,3 +118,8 @@ function remove_stopwords(str) {
     }
     return(res.join(' '))
 }  
+
+function sigmoid(z) {
+ y = 1/(1+(Math.exp(-10*(z-0.5))))
+	return y;
+}
