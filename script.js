@@ -37,12 +37,12 @@ function handleInput(e) {
 	characters.innerHTML = charactersCounter;
 	lettersAndNumbers.innerHTML = lettersAndNumbersCounter;
 	sentences.innerHTML = sentencesCounter;
-	readingTime.innerHTML = tempsEnMinutes(readingTimeCounter); 
-	handwritingTime.innerHTML = 'entre '+tempsEnMinutes(handwritingTimeCounterMin) + ' et ' +tempsEnMinutes(handwritingTimeCounterMax) ; 
-	speakingTime.innerHTML = tempsEnMinutes(speakingTimeCounter); 
+	readingTime.innerHTML = tempsEnMinutesEtSecondes(readingTimeCounter); 
+	handwritingTime.innerHTML = 'entre '+tempsEnMinutesEtSecondes(handwritingTimeCounterMin) + ' et ' +tempsEnMinutesEtSecondes(handwritingTimeCounterMax) ; 
+	speakingTime.innerHTML = tempsEnMinutesEtSecondes(speakingTimeCounter); 
 }
 
-function tempsEnMinutes(time) {
+function tempsEnMinutesEtSecondes(time) {
 let minutes = Math.floor(time / 60);
 let seconds = time - minutes * 60;
 let temps = 0;
