@@ -33,7 +33,7 @@ function handleInput(e) {
 	let wordsCounter = wordsList.length;
 	let charactersCounter = text.length;
 	let lettersAndNumbersCounter = textCleanNoWhiteSpace.length;
-	let sentencesClean = text.split('.').filter(function (el) {
+	let sentencesClean = text.split(/[\\.!?\n]/).filter(function (el) {
 		return el != '';
 	  });
 	let sentencesCounter = sentencesClean.length;
